@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAÉ 1.04 - Portfolio Iban Leconte</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Port<span>folio</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Retour à l'accueil</a></li>
+            <li><a href="index.html#sae">Toutes les SAÉ</a></li>
+        </ul>
+    </nav>
+
+    <header class="container bg-light" style="padding-top: 50px; padding-bottom: 50px;">
+        <p style="color: var(--primary); font-weight: 600; letter-spacing: 1px;">RESSOURCE R1.04</p>
+        <h1>SAÉ 1.04 : Création d'un site web dynamique</h1>
+        <div class="tags" style="margin-top: 15px;">
+            <span>HTML5/CSS3</span><span>Développement Web</span><span>UX Design</span><span>Rugby Project</span>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="sae-section">
+            <h2 class="section-title">Contexte et Objectifs</h2>
+            <div class="path-card" style="width: 100%;">
+                <p>L'objectif de cette SAÉ était de concevoir un site web complet en partant d'un cahier des charges précis. J'ai choisi de travailler sur une thématique qui me tient à cœur : <strong>le Rugby</strong>. Le site devait être ergonomique, visuellement cohérent et techniquement valide selon les standards du W3C.</p>
+                <h4 style="margin-top:15px;">Compétences visées :</h4>
+                <ul>
+                    <li>Structurer du contenu avec un balisage sémantique.</li>
+                    <li>Mettre en œuvre une charte graphique avec CSS.</li>
+                    <li>Assurer l'adaptabilité du site (Responsive Design).</li>
+                    <li>Publier et rendre accessible le site via un hébergement.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="sae-section">
+            <h2 class="section-title">Réalisations techniques</h2>
+            <p style="margin-bottom: 20px;">Aperçu du travail effectué sur le site de Rugby :</p>
+            <div class="project-grid">
+                <div class="card">
+                    <div class="card-header">Interface Utilisateur</div>
+                    <div class="card-body">
+                        <div style="background: #eef2f7; border: 1px dashed var(--primary); height: 200px; display:flex; align-items:center; justify-content:center; border-radius:8px; text-align:center; padding: 10px;">
+                            <p style="color: var(--primary); font-size: 0.8rem;">[Capture d'écran du site Rugby-Site1]</p>
+                        </div>
+                        <p style="font-size: 0.9rem; margin-top: 15px;">Mise en page utilisant Flexbox pour aligner les articles et les scores de matchs.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">Structure CSS Responsive</div>
+                    <div class="card-body">
+                        <pre style="background: #1a1a1a; color: #ff79c6; padding: 15px; font-size: 0.75rem; border-radius: 5px; overflow-x: auto; font-family: 'Space Mono', monospace;">
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+                        </pre>
+                        <p style="font-size: 0.9rem; margin-top: 15px;">Utilisation des Media Queries pour garantir une consultation optimale sur mobile.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sae-section">
+            <h2 class="section-title">Analyse Réflexive</h2>
+            <div class="path-card" style="width: 100%; border-left: 5px solid var(--primary);">
+                
+                <h3>Difficultés rencontrées & Solutions</h3>
+                <p>La gestion du positionnement des éléments complexes (comme le menu de navigation et les cartes de joueurs) a été un défi. Au début, j'utilisais des marges fixes qui cassaient le design sur petit écran. <strong>Solution :</strong> J'ai appris à utiliser <em>CSS Flexbox</em> et les unités relatives (%), ce qui a rendu le site beaucoup plus flexible et moderne.</p>
+
+                <h3 style="margin-top: 25px;">Apprentissages Critiques (AC) validés</h3>
+                <p>Grâce à ce projet, j'ai pu démontrer les compétences du pôle <strong>RT3 (Développer)</strong> :</p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px;">✅ <strong>AC23.02 :</strong> Développer une application à partir d'un cahier des charges (Web).</li>
+                    <li style="margin-bottom: 10px;">✅ <strong>AC23.05 :</strong> Accéder à un ensemble de données (via l'intégration de contenu dynamique).</li>
+                </ul>
+
+                <h3 style="margin-top: 25px;">Auto-évaluation</h3>
+                <p>Le point fort de mon site est son graphisme épuré et sa facilité de navigation. Pour une prochaine étape, j'aimerais intégrer du JavaScript pour rendre les tableaux de scores interactifs avec des mises à jour en temps réel.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer style="background: var(--dark); color: white; padding: 40px 10%; text-align: center; margin-top: 50px;">
+        <p>&copy; 2026 Iban Leconte - IUT Caen Normandie</p>
+    </footer>
+
+</body>
+</html>
