@@ -6,9 +6,13 @@
     --text: #1e293b;
     --border: #e2e8f0;
     --accent: #ec4899;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --shadow-soft: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--text);
@@ -31,27 +35,86 @@ nav {
 
 .logo { font-weight: 700; font-size: 1.5rem; color: var(--dark); }
 .logo span { color: var(--primary); }
+
+/* Menu Hamburger */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--dark);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
 .nav-links { display: flex; list-style: none; gap: 2rem; }
 .nav-links a { text-decoration: none; color: var(--text); font-weight: 400; transition: 0.3s; }
 .nav-links a:hover { color: var(--primary); }
 
-/* Hero Section */
+/* Hero Section - FOND MODIFIÉ ICI */
 .hero {
     padding: 50px 10%;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    /* Nouveau dégradé plus intense et vibrant au lieu du gris/bleu très sombre */
+    background: linear-gradient(135deg, #1e293b 0%, #3730a3 100%);
     min-height: auto;
     display: flex;
     align-items: center;
     color: white;
+    position: relative;
+    overflow: hidden;
 }
 
-.hero-content { display: flex; align-items: center; gap: 4rem; flex-wrap: wrap; }
+/* Décoration SVG en arrière-plan */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--c1-color, rgba(99, 102, 241, 0.25)) 0%, rgba(99, 102, 241, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(var(--c1-tx, 0px), var(--c1-ty, 0px));
+    transition: transform 3.5s ease-in-out, background 2.5s ease-in-out;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -50px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--c2-color, rgba(139, 92, 246, 0.2)) 0%, rgba(139, 92, 246, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(var(--c2-tx, 0px), var(--c2-ty, 0px));
+    transition: transform 4s ease-in-out, background 2.5s ease-in-out;
+}
+
+.hero-content { display: flex; align-items: center; gap: 4rem; flex-wrap: wrap; position: relative; z-index: 1; }
 .hero-text { flex: 1; min-width: 300px; }
 .hero-text h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 1.5rem; color: white; }
-.highlight { color: var(--primary); }
+.highlight { color: #a5b4fc; /* Couleur de mise en valeur légèrement adoucie pour contraster avec le nouveau fond */ }
 .subtitle { font-size: 1.2rem; color: var(--secondary); font-weight: 600; margin-bottom: 1rem; }
-.hero-text > p { margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.9); font-size: 1.05rem; }
-
 .hero-text > p { margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.9); font-size: 1.05rem; }
 
 .profile-img {
@@ -59,7 +122,7 @@ nav {
     height: 280px;
     border-radius: 20px;
     object-fit: cover;
-    box-shadow: 0px 10px 30px rgba(99, 102, 241, 0.2);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4); /* Ombre accentuée pour détacher l'image du fond */
 }
 
 /* Sections */
@@ -89,7 +152,6 @@ nav {
     font-size: 0.85rem;
     border: 1px solid rgba(99, 102, 241, 0.2);
     margin-right: 5px;
-    color: var(--primary);
 }
 .link-btn { 
     color: var(--primary); 
@@ -132,6 +194,61 @@ nav {
     box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
 }
 
+/* Section Présentation et Projection */
+.path-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.path-card {
+    background: white;
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.path-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    transition: left 0.3s ease;
+    z-index: 0;
+}
+
+.path-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
+    border-color: var(--secondary);
+}
+
+.path-card:hover::before {
+    left: 0;
+}
+
+.path-card h3 {
+    font-size: 1.4rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.path-card p {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+}
+
 /* Compétences */
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; }
 .skill-item {
@@ -152,16 +269,16 @@ nav {
 .skill-item p { color: #666; font-size: 0.95rem; margin-top: 10px; }
 
 /* Footer */
-footer { background: var(--dark); color: white; text-align: center; padding: 60px 10% 20px; }
-footer h2 { margin-bottom: 1.5rem; font-size: 2rem; }
-footer > div > p { margin-bottom: 2rem; font-size: 1.05rem; color: rgba(255, 255, 255, 0.8); }
-footer .btn { margin-bottom: 2rem; }
-.footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid #333; font-size: 0.8rem; opacity: 0.7; }
+footer { background: var(--dark); color: white; text-align: center; padding: 30px 10%; }
+footer h2 { margin-bottom: 0.8rem; font-size: 1.5rem; }
+footer > div > p { margin-bottom: 1rem; font-size: 0.95rem; color: rgba(255, 255, 255, 0.8); }
+footer .btn { margin-bottom: 1.5rem; padding: 10px 24px; }
+.footer-bottom { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #333; font-size: 0.75rem; opacity: 0.7; }
 
 /* Responsive */
 @media (max-width: 768px) {
     .hero-text h1 { font-size: 2.5rem; }
-    .nav-links { display: none; } /* On pourrait ajouter un menu burger ici */
+    .nav-links { display: none; }
 }
 
 /* Style de la carte de présentation */
@@ -240,13 +357,6 @@ footer .btn { margin-bottom: 2rem; }
     border-left: 3px solid var(--primary);
     padding-left: 15px;
     margin-bottom: 0 !important;
-}
-
-/* --- Variables Additionnelles --- */
-:root {
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.3);
-    --shadow-soft: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
 }
 
 .sae-page {
@@ -435,8 +545,96 @@ footer .btn { margin-bottom: 2rem; }
         grid-template-columns: 1fr;
     }
     .about-details {
-        order: -1; /* Les détails passent au-dessus sur mobile */
+        order: -1;
     }
 }
 
+/* Icônes Sociales */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+    list-style: none;
+    padding: 0;
+}
 
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-links a:hover {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    border-color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+.social-links i {
+    font-size: 1.5rem;
+}
+
+/* Animations au scroll */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card, .skill-item, .path-card, .detail-card {
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-in {
+    animation: slideInUp 0.6s ease forwards;
+}
+
+/* Responsive Menu */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: white;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    
+    .nav-links.active {
+        max-height: 300px;
+    }
+    
+    .nav-links li {
+        padding: 1rem;
+        border-bottom: 1px solid var(--border);
+    }
+    
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+}
