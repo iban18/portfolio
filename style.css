@@ -638,3 +638,12 @@ footer .btn { margin-bottom: 1.5rem; padding: 10px 24px; }
         border-bottom: none;
     }
 }
+
+/* Ajoute ou modifie ces lignes à la fin de ton style.css pour combler les vides verticaux excessifs */
+.sae-section {
+    margin-top: 20px;
+}
+main.container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
