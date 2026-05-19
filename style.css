@@ -647,3 +647,84 @@ main.container {
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
+.container {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 40px 20px; /* Utilise des paddings en px pour créer une marge de sécurité sur mobile */
+    box-sizing: border-box;
+}
+
+.about-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Aligne les éléments ou les empile automatiquement si l'écran est trop petit */
+    gap: 40px;
+    width: 100%;
+}
+
+.path-content {
+    display: flex;
+    flex-wrap: wrap; /* Permet aux cartes de passer l'une sous l'autre sur mobile */
+    gap: 30px;
+    width: 100%;
+}
+
+.path-card {
+    flex: 1 1 300px; /* Grandit si nécessaire, mais ne descend pas en dessous de 300px avant de sauter une ligne */
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   MEDIA QUERIES - OPTIMISATION MOBILE & TABLETTE
+   ========================================================= */
+
+/* Pour les écrans intermédiaires (Tablettes / petits PC - moins de 992px) */
+@media (max-width: 992px) {
+    .hero-content {
+        flex-direction: column-reverse; /* Met la photo au-dessus ou en dessous du texte proprement */
+        text-align: center;
+        gap: 30px;
+    }
+
+    .profile-img {
+        width: 200px; /* Réduit un peu la taille de la photo sur petit écran */
+        height: 200px;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem; /* Réduction du titre principal */
+    }
+
+    .hero-btns {
+        justify-content: center; /* Centre les boutons d'action */
+    }
+}
+
+/* Pour les petits écrans (Smartphones - moins de 576px) */
+@media (max-width: 576px) {
+    .hero-text h1 {
+        font-size: 2rem; /* Titre encore plus adapté aux téléphones */
+    }
+
+    .hero-btns {
+        flex-direction: column; /* Aligne les deux boutons l'un sous l'autre */
+        width: 100%;
+        gap: 10px;
+    }
+
+    .hero-btns .btn {
+        width: 100%; /* Les boutons prennent toute la largeur pour être plus cliquables */
+        text-align: center;
+    }
+    
+    .card-body, .path-card {
+        padding: 20px; /* Réduit les marges internes pour gagner de la place */
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
